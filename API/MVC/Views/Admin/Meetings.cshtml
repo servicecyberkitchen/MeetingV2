@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "Meetings";
+}
+
+<div class="row">
+    <div class="col-4">
+        <p> Datum </p>
+    </div>
+    <div class="col-3">
+        <p> Tijdslot </p>
+    </div>
+    <div class="col-1">
+        <p> Naam verantwoordelijke </p>
+    </div>
+    <div class="col-4">
+        <p> CRUD </p>
+    </div>
+</div>
+
+@foreach (var Meeting in ViewBag.meetings)
+{
+<div class="row">
+    
+    <div class="col-5">
+        <p> @Meeting.IdMeeting  ||  @Meeting.Day || @Meeting.StartTime || @Meeting.EndTime </p>
+    </div>
+
+    <div class="col-1">
+        Fake Name
+    </div>
+
+    <div class="col-1">
+        @Meeting.Status
+    </div>
+
+    <div class="col-5">
+        <a href="@Url.Action("UpdateMeetingStatus", "Admin", new { id = Meeting.IdMeeting, status = 2})">
+            Approve
+        </a>
+
+        <a href="@Url.Action("UpdateMeetingStatus", "Admin", new { id = Meeting.IdMeeting, status = 3}) ">
+            Reject
+        </a>
+
+        <a href=" @Url.Action("UpdateMeetingStatus", "Admin", new { id = Meeting.IdMeeting, status = 4}) ">
+            Complete
+        </a>
+    </div> 
+</div>
+}
